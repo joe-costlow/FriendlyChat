@@ -184,16 +184,16 @@ public class MainActivity extends AppCompatActivity {
                     mMessageAdapter.add(friendlyMessage);
                 }
 
-                @Override
+//                @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
-                @Override
+//                @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
-                @Override
+//                @Override
                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
-                @Override
+//                @Override
                 public void onCancelled(DatabaseError databaseError) {}
             };
 
@@ -217,12 +217,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case R.id.sign_out_menu:
+//                sign out
+                AuthUI.getInstance().signOut(this);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
         if (mAuthStateListener != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
         }
