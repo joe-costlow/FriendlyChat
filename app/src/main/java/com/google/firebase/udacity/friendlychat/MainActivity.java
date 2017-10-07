@@ -156,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
                                     .setAvailableProviders(
                                             Arrays.asList(
                                                     new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build())
-                                    )
+                                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
                                     .build(), RC_SIGN_IN);
                 }
             }
@@ -184,16 +183,16 @@ public class MainActivity extends AppCompatActivity {
                     mMessageAdapter.add(friendlyMessage);
                 }
 
-//                @Override
+                @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
-//                @Override
+                @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
-//                @Override
+                @Override
                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
-//                @Override
+                @Override
                 public void onCancelled(DatabaseError databaseError) {}
             };
 
@@ -221,7 +220,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.sign_out_menu:
 //                sign out
+//                original code from course, not working, throws issue with google
                 AuthUI.getInstance().signOut(this);
+//                mFirebaseAuth.signOut();
                 return true;
 
             default:
